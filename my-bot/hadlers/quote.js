@@ -10,7 +10,7 @@ const quoteList = [
 ];
 
 function quoteHandler() {
-    let randomInt = common.getRandomInt(0, quoteList.length + 1);
+    let randomInt = common.getRandomInt(0, quoteList.length);
     return quoteList[randomInt];
 }
 

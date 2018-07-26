@@ -11,6 +11,7 @@ function getBotResponce(msg) {
   if (msg.trim().startsWith(botName)) {
     let preparedUserInput = msg
       .replace(/[ ]+/, ' ').trim()
+      .replace(/[\n]+/, '').trim()
       .substr(botName.length).trim();
 
     result = commandProcessor.process(preparedUserInput);
@@ -19,6 +20,7 @@ function getBotResponce(msg) {
   return result;
 }
 
+//Chain
 let middleware = target => (...args) => {
   let responces = args
     .map(x => getBotResponce(x.text))

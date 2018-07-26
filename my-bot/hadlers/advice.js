@@ -8,7 +8,7 @@ const adviceList = [
 ];
 
 function adviceHandler() {
-    let randomInt = common.getRandomInt(0, adviceList.length + 1);
+    let randomInt = common.getRandomInt(0, adviceList.length);
     return adviceList[randomInt];
 }
 

@@ -3,32 +3,24 @@ let notes = [];
 function saveNoteHandler(data) {
     notes.push({ ...data })
 
-    // FIX: added fields to message . . .
-    return `Note with title: ${data.title} and with desc: ${data.description}`;
+    return `Note with title: ${data.title} and with desc: ${data.body}`;
 }
 
 function showNoteListHandler() {
-    // FIX: simplified
-    // for (let obj of notes) {
-    //     console.log(obj);
-    // }
+    if (notes.length == 0)
+        return 'Sorry, there are no notes :(';
 
     return notes.map((x, i) => `${i}. ${x.title} ${x.body}`)
         .join('\n')
 }
 
 function showNoteHandler(data) {
+    if (notes.length == 0)
+        return 'Sorry, there are no notes :(';
+
     return notes.filter(x => x.title == data.title)
         .map((x, i) => `${i}. ${x.title} ${x.body}`)
         .join('\n');
-
-    // FIX: simplified
-    // for (let obj of notes) {
-    //     if (obj.title == data.title) {
-    //         return console.log(`Title: "${obj.title}" body: "${obj.body}"`)
-    //     }
-    //     else return null;
-    // }
 }
 
 function deleteNoteHandler(data) {

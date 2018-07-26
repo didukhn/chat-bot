@@ -39,7 +39,7 @@ function main() {
       text: text.value,
       date: new Date()
     };
-    text.value = " ";
+    text.value = '';
     socket.emit('chat message', data);
   };
 
@@ -57,26 +57,6 @@ function main() {
     unactiveTimeout = setTimeout(() => {
       socket.emit('chat user not typing');
     }, 2000);
-  });
-
-  socket.on('chat history', function (msg) {
-    console.log(msg);
-    messages.innerHTML = '';
-    for (var message of msg) {
-      var newMsg = document.createElement('li');
-      if (message.text.indexOf('@' + userName) != -1) {
-        newMsg.classList.add('red');
-      }
-      newMsg.innerHTML = `
-      <div class="message-orange">
-      <div class="user-name">${message.name}</div>
-        <p class="message-content">${message.text}</p>
-        <div class="message-timestamp-right">${message.date}</div>
-      </div>`;
-
-      messages.appendChild(newMsg);
-
-    }
   });
 
   socket.on('chat users update', updateUsers);
@@ -100,6 +80,26 @@ function main() {
     var newUser = document.createElement('li');
     newUser.innerText = user.name + ` ${user.nickName}`;
     users.appendChild(newUser);
+  });
+
+  socket.on('chat history', function (msg) {
+    console.log(msg);
+    messages.innerHTML = '';
+    for (var message of msg) {
+      var newMsg = document.createElement('li');
+      if (message.text.indexOf('@' + userName) != -1) {
+        newMsg.classList.add('red');
+      }
+      newMsg.innerHTML = `
+      <div class="message-orange">
+      <div class="user-name">${message.name}</div>
+        <p class="message-content">${message.text}</p>
+        <div class="message-timestamp-right">${message.date}</div>
+      </div>`;
+
+      messages.appendChild(newMsg);
+
+    }
   });
 
 

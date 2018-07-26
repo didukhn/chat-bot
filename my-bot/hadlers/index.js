@@ -32,7 +32,7 @@ class HandlerFactory {
             case 'convert':
                 return moneyExchangeHandler;
             default:
-                throw new Error('Sorry mickle');
+                throw new Error("sorry michael it's just business"); // :)
         }
     }
 }
