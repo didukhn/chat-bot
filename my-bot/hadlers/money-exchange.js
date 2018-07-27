@@ -23,19 +23,17 @@ function moneyExchangeHandler(data) {
     }
     switch (direction.join()) { // magic :D
         case [currency[0], currency[1]].join():
-
             return `${currency[0]} to ${currency[1]} ${count * euro.dollar}`;
-
         case [currency[1], currency[0]].join():
-            return `${currency[0]} to ${currency[1]} ${count * dollar.euro}`;
+            return `${currency[1]} to ${currency[0]} ${count * dollar.euro}`;
         case [currency[1], currency[2]].join():
-            return `${currency[0]} to ${currency[1]} ${count * dollar.grivna}`;
+            return `${currency[1]} to ${currency[2]} ${count * dollar.grivna}`;
         case [currency[2], currency[1]].join():
-            return `${currency[0]} to ${currency[1]} ${count * grivna.dollar}`;
+            return `${currency[2]} to ${currency[1]} ${count * grivna.dollar}`;
         case [currency[0], currency[2]].join():
-            return `${currency[0]} to ${currency[1]} ${count * euro.grivna}`;
+            return `${currency[0]} to ${currency[2]} ${count * euro.grivna}`;
         case [currency[2], currency[1]].join():
-            return `${currency[0]} to ${currency[1]} ${count * grivna.dollar}`;
+            return `${currency[2]} to ${currency[1]} ${count * grivna.dollar}`;
         default:
             return null;
     }
