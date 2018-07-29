@@ -12,11 +12,19 @@ class CommandProcessor {
         for (let parser of this._parsers) {
             let result = parser(fromUser);
             if (result) {
-                let handler = HandlerFactory.getHandler(result.command); // weatherHandler
-                return handler(result.data);
+                let handler = HandlerFactory.getHandler(result.command);
+
+                return this.partialApplication(result.data)(handler);
             }
         }
         return 'Invalid command';
+    }
+
+    //Partial Application 
+    partialApplication(data) {
+        return (handler) => {
+            return handler(data);
+        }
     }
 }
 

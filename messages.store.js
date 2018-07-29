@@ -20,7 +20,7 @@ function getBotResponce(msg) {
   return result;
 }
 
-//Chain
+//Curring
 let middleware = target => (...args) => {
   let responces = args
     .map(x => getBotResponce(x.text))
